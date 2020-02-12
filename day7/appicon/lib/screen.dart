@@ -26,6 +26,7 @@ class Screen_State extends State<Screen> {
     Colors.blueAccent,
     Colors.blueGrey,
     Colors.yellow,
+    Colors.orange,
   ];
   @override
   Widget build(BuildContext context) {
@@ -82,7 +83,10 @@ class Screen_State extends State<Screen> {
                                           child: (Container(
                                             margin: EdgeInsets.only(top: 5),
                                             color: random_colors[arrow_icon],
-                                            child: Icon(Icons.arrow_right),
+                                            child: Icon(
+                                              Icons.arrow_right,
+                                              size: 50,
+                                            ),
                                             width: 500,
                                           )),
                                         ),

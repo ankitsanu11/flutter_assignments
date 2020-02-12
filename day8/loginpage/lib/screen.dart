@@ -17,10 +17,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -34,7 +35,7 @@ class LoginPageState extends State<LoginPage> {
                     child: Container(
                       width: 200,
                       height: 200,
-                      child: Image.asset('./assets/images/travel_logo.jpg'),
+                      child: Image.asset('./assets/images/icon.jpg'),
                     ),
                   ),
                   Expanded(
@@ -53,12 +54,14 @@ class LoginPageState extends State<LoginPage> {
               flex: 3,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                margin: EdgeInsets.all(10),
                 child: Column(
                   children: <Widget>[
                     Expanded(
                       flex: 1,
                       child: Container(
                         child: TextField(
+                          controller: email,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person),
                             labelText: 'Emailid',
@@ -74,11 +77,12 @@ class LoginPageState extends State<LoginPage> {
                       flex: 1,
                       child: Container(
                         child: TextField(
+                          controller: password,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.vpn_key),
                             labelText: 'Password',
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
+                              borderSide: BorderSide(width: 4),
                             ),
                           ),
                         ),
@@ -95,14 +99,19 @@ class LoginPageState extends State<LoginPage> {
                                 child: RaisedButton(
                                   child: Text("Login"),
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ThirdPage()),
-                                    );
+                                    if (email.text != '' &&
+                                        email.text != null &&
+                                        password.text != '' &&
+                                        password.text != null &&
+                                        email.text == password.text)
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => ThirdPage()),
+                                      );
                                   },
-                                  color: Colors.red,
-                                  textColor: Colors.yellow,
+                                  color: Colors.blueAccent,
+                                  textColor: Colors.white,
                                 ),
                               ),
                             ),
@@ -112,6 +121,8 @@ class LoginPageState extends State<LoginPage> {
                                 child: RaisedButton(
                                   child: Text("SignUp"),
                                   onPressed: () {
+                                    print(email.text);
+
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
