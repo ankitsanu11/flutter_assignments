@@ -8,18 +8,12 @@ class Signup extends StatefulWidget {
 class SignupState extends State<Signup> {
   //final scaffoldkey = GlobalKey<ScaffoldState>();
   final _formkey = GlobalKey<FormState>();
-  static bool autovalidatename = false;
+  bool autoValidatename = false;
   bool autoValidateemail = false;
-  bool autovalidatepassword = false;
-  bool autovalidatecompassword = false;
-  String name, email, password, compassword;
-
+  bool autoValidatepassword = false;
+  bool autoValidatecompassword = false;
   bool autoValidate = false;
-  @override
-  void initState() {
-    name = '';
-    super.initState();
-  }
+  String name, email, password, compassword;
 
   void _validateInput() {
     if (_formkey.currentState.validate()) {
@@ -34,11 +28,10 @@ class SignupState extends State<Signup> {
   String validateName(String value) {
     String Pattern = r'(^[a-zA-Z]*$)';
     RegExp regExp = new RegExp(Pattern);
-    if (autovalidatename && value.length == 0) {
-      print('hi2');
+    if (value.length == 0)
       return 'Enter your Name';
-    } else if (value.length != 0 && !regExp.hasMatch(value)) {
-      return 'Name only in character';
+    else if (!regExp.hasMatch(value)) {
+      return 'Aplabhet only';
     }
     return null;
   }
@@ -50,7 +43,7 @@ class SignupState extends State<Signup> {
     if (value.length == 0)
       return 'Enter your Email';
     else if (!regExp.hasMatch(value)) {
-      return 'wrong Input';
+      return 'Invalid input';
     }
     return null;
   }
@@ -59,7 +52,7 @@ class SignupState extends State<Signup> {
     String Pattern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(Pattern);
     if (value.length == 0)
-      return 'Enter your password ';
+      return 'Enter your Password';
     else if (!regExp.hasMatch(value)) {
       return 'Invalid';
     }
@@ -70,7 +63,7 @@ class SignupState extends State<Signup> {
     String Pattern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(Pattern);
     if (value.length == 0)
-      return 'Re-Enter your Password';
+      return 'Enter your Password';
     else if (!regExp.hasMatch(value)) {
       return 'Invalid';
     }
@@ -82,103 +75,86 @@ class SignupState extends State<Signup> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registration'),
+        title: Text('Registeration'),
         centerTitle: true,
       ),
       body: Form(
         key: _formkey,
-        //autovalidate: autoValidate,
+        autovalidate: autoValidate,
         child: Container(
             padding: EdgeInsets.all(30),
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  autovalidate: autovalidatename,
-                  // onTap: () {
-                  //   print('hi');
-                  //   setState(() {
-                  //     autovalidatename = true;
-                  //   });
-                  // },
-                  decoration: InputDecoration(
-                      labelText: 'Name', errorText: validateName(name)),
-                  keyboardType: TextInputType.text,
-
-                  validator: validateName,
-                  onChanged: (String val) {
-                    setState() {
-                      name = val;
-                    }
-                  },
-                  // onSaved: (String val) {
-                  //   name = val;
-                  // },
-                ),
-                TextFormField(
-                  // autovalidate: autoValidateemail,
                   onTap: () {
                     setState(() {
-                      autovalidatename = true;
+                      autoValidatename = true;
                     });
                   },
-                  // autovalidate: autoValidate,
+                  autovalidate: autoValidatename,
                   decoration: InputDecoration(
-                      labelText: 'Email', errorText: validateEmail(email)),
+                    labelText: 'Name',
+                  ),
+                  keyboardType: TextInputType.text,
+                  validator: validateName,
+                  onSaved: (String val) {
+                    name = val;
+                  },
+                ),
+                TextFormField(
+                  onTap: () {
+                    setState(() {
+                      autoValidateemail = true;
+                    });
+                  },
+                  autovalidate: autoValidateemail,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                  ),
                   keyboardType: TextInputType.emailAddress,
                   validator: validateEmail,
-                  onChanged: (String val) {
-                    setState(() {
-                      email = val;
-                    });
-                  },
                   onSaved: (String val) {
                     email = val;
                   },
                 ),
                 TextFormField(
-                  autovalidate: autovalidatepassword,
                   onTap: () {
-                    setState() {
-                      autovalidatepassword = true;
-                    }
-                  },
-                  //  autovalidate: autoValidate,
-                  decoration: InputDecoration(
-                      labelText: 'Password',
-                      errorText: validatePassword(password),
-                      suffixIcon: Icon(Icons.remove_red_eye)),
-                  keyboardType: TextInputType.number,
-                  validator: validatePassword,
-                  onChanged: (String val) {
                     setState(() {
-                      password = val;
+                      autoValidatepassword = true;
                     });
                   },
+                  autovalidate: autoValidatepassword,
+                  decoration: InputDecoration(
+                      labelText: 'Password',
+                      suffixIcon: Icon(Icons.remove_red_eye)),
+                  keyboardType: TextInputType.text,
+                  validator: validatePassword,
                   onSaved: (String val) {
                     password = val;
                   },
+                  obscureText: true,
                 ),
                 TextFormField(
-                  autovalidate: autovalidatecompassword,
                   onTap: () {
-                    setState() {
-                      autovalidatecompassword = true;
-                    }
+                    setState(() {
+                      autoValidatecompassword = true;
+                    });
                   },
-                  //autovalidate: autoValidat,
+                  autovalidate: autoValidatecompassword,
                   decoration: InputDecoration(
                       labelText: 'Confirm password',
                       suffixIcon: Icon(Icons.remove_red_eye)),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   validator: validateCompassword,
                   onSaved: (String val) {
                     compassword = val;
                   },
+                  obscureText: true,
                 ),
                 SizedBox(height: 100),
                 RaisedButton(
                     child: Text(
-                      'Register',
+                      'Sign Up',
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                     onPressed: _validateInput)
