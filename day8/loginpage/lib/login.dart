@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loginpage/second_page.dart';
-import 'package:loginpage/thridpage.dart';
+import 'package:loginpage/signup.dart';
+import 'package:loginpage/blog.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -89,6 +89,20 @@ class LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Expanded(
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(170.0, 00.0, 00.0, 70.0),
+                        child: FlatButton(
+                          onPressed: () {
+                            /*...*/
+                          },
+                          child: Text(
+                            "Forget Password?",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
                       flex: 1,
                       child: Container(
                         child: Row(
@@ -107,7 +121,7 @@ class LoginPageState extends State<LoginPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => ThirdPage()),
+                                            builder: (context) => Blogs()),
                                       );
                                   },
                                   color: Colors.blueAccent,
@@ -126,14 +140,14 @@ class LoginPageState extends State<LoginPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SecondPage()),
+                                          builder: (context) => Signup()),
                                     );
                                   },
                                   color: Colors.red,
                                   textColor: Colors.yellow,
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),

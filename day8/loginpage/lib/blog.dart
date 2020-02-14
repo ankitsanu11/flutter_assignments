@@ -2,20 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-// class Travelapp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     // TODO: implement build
-//     return MaterialApp();
-//   }
-// }
-
-class ThirdPage extends StatefulWidget {
+class Blogs extends StatefulWidget {
   @override
-  ThirdPageState createState() => ThirdPageState();
+  BlogsState createState() => BlogsState();
 }
 
-class ThirdPageState extends State<ThirdPage> {
+class BlogsState extends State<Blogs> {
   static List<String> city_image = [
     './assets/images/image(1).jpeg',
     './assets/images/download.jpeg',
@@ -41,12 +33,12 @@ class ThirdPageState extends State<ThirdPage> {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
+            icon: Icon(Icons.person),
+            title: Text('Profile'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
+            icon: Icon(Icons.info),
+            title: Text('About'),
           ),
         ],
       ),
