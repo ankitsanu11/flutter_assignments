@@ -21,6 +21,49 @@ class LoginPageState extends State<LoginPage> {
   TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    void show_dialog() {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                height: 200,
+                width: 300,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: "New Password",
+                          fillColor: Colors.white,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(25.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: "Confirm Password",
+                          fillColor: Colors.white,
+                          border: new OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              25,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          });
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -93,6 +136,9 @@ class LoginPageState extends State<LoginPage> {
                         margin: EdgeInsets.fromLTRB(170.0, 00.0, 00.0, 70.0),
                         child: FlatButton(
                           onPressed: () {
+                            setState(() {
+                              show_dialog();
+                            });
                             /*...*/
                           },
                           child: Text(

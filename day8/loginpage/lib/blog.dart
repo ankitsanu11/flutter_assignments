@@ -1,6 +1,8 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:loginpage/quiz.dart';
+import 'package:loginpage/swipeScreen.dart';
 
 class Blogs extends StatefulWidget {
   @override
@@ -101,6 +103,24 @@ class BlogsState extends State<Blogs> {
                   trip_image = city_image[3];
                   trip_details = city_details[3];
                 });
+              },
+            ),
+            ListTile(
+              title: Text('Quiz Game'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuizScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Swipe Screen'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SwipeAction()),
+                );
               },
             )
           ],
