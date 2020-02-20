@@ -5,6 +5,7 @@ import 'package:loginpage/blog.dart';
 import 'package:loginpage/splashscreen.dart';
 import 'package:loginpage/swipeScreen.dart';
 import 'package:loginpage/quiz.dart';
+import 'package:loginpage/camera.dart';
 
 void main() => runApp(new MyApp());
 

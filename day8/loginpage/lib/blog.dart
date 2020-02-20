@@ -1,6 +1,7 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:loginpage/camera.dart';
 import 'package:loginpage/quiz.dart';
 import 'package:loginpage/swipeScreen.dart';
 
@@ -120,6 +121,15 @@ class BlogsState extends State<Blogs> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SwipeAction()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Camera'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Camera()),
                 );
               },
             )
