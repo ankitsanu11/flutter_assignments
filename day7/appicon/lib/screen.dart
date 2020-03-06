@@ -50,10 +50,12 @@ class Screen_State extends State<Screen> {
                                 flex: 1,
                                 child: GestureDetector(
                                   onTap: () {
-                                    setState(() {
-                                      home_icon = Random()
-                                          .nextInt(random_colors.length);
-                                    });
+                                    setState(
+                                      () {
+                                        home_icon = Random()
+                                            .nextInt(random_colors.length);
+                                      },
+                                    );
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
