@@ -1,145 +1,88 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
-import 'package:stack/stack.dart';
 
-class Calculator extends StatefulWidget {
+class SimpleCalculator extends StatefulWidget {
   @override
   _SimpleCalculatorState createState() => _SimpleCalculatorState();
 }
 
-class _SimpleCalculatorState extends State<Calculator> {
-  String radioValue = "Int";
-  double firnum, secnum;
-  String textdisplay = "";
-  String res;
-  String operationperform;
-  String expression = "";
-  bool havedot = false;
-  void buttonPressed(String buttonText) {
-    // if (buttonText == 'AC') {
-    //   textdisplay = "";
-    //   firnum = 0;
-    //   secnum = 0;
-    //   res = "";
-    // } else if (buttonText == "⌫") {
-    // } else if (buttonText == ".") {
-    //   textdisplay = textdisplay + buttonText;
-    //   res = textdisplay;
-    //   operationperform = buttonText;
-    // } else if (buttonText == "+" ||
-    //     buttonText == "-" ||
-    //     buttonText == "*" ||
-    //     buttonText == "/") {
-    //   firnum = double.parse(textdisplay);
-    //   res = "";
-    //   operationperform = buttonText;
-    // } else if (buttonText == "=") {
-    //   secnum = double.parse(textdisplay);
-    //   if (operationperform == "+") {
-    //     res = (firnum + secnum).toString();
-    //   }
-    //   if (operationperform == "-") {
-    //     res = (firnum - secnum).toString();
-    //   }
-    //   if (operationperform == "*") {
-    //     res = (firnum * secnum).toString();
-    //   }
-    //   if (operationperform == "/") {
-    //     res = (firnum ~/ secnum).toString();
-    //   }
-    // } else {
-    //   res = int.parse(textdisplay + buttonText).toString();
-    // }
-    // setState(() {
-    //   print('$textdisplay');
-    //   textdisplay = res;
-    // });
+class _SimpleCalculatorState extends State<SimpleCalculator> {
+  String equation = "0";
 
-    if (buttonText == 'AC') {
-      setState(() {
-        expression = "";
-      });
-    } else if (buttonText == '=') {
-      setState(() {
+  String result = "0";
+  String expression = "";
+  double equationFontSize = 38.0;
+  double resultFontSize = 48.0;
+  String radioValue = "Int";
+  bool isButtonDisable;
+  bool haveDot = false;
+  bool isDotDisbaled = true;
+  bool haveOpp = false;
+  buttonPressed(String buttonText) {
+    if (radioValue == 'Int') {
+      if (buttonText == '.') {
+        isButtonDisable ? null : result;
+      }
+    }
+
+    setState(() {
+      if (buttonText == "AC") {
+        equation = "0";
+        result = "0";
+        equationFontSize = 38.0;
+        resultFontSize = 48.0;
+      } else if (buttonText == "⌫") {
+        equationFontSize = 48.0;
+        resultFontSize = 38.0;
+
+        equation = equation.substring(0, equation.length - 1);
+        if (equation == "") {
+          equation = "0";
+        }
+      } else if (buttonText == "=") {
+        equationFontSize = 38.0;
+        resultFontSize = 48.0;
+
+        expression = equation;
+        expression = expression.replaceAll('×', '*');
+        expression = expression.replaceAll('÷', '/');
+
         try {
           Parser calc = Parser();
           Expression exp = calc.parse(expression);
 
           ContextModel cmodel = ContextModel();
-          expression = '${exp.evaluate(EvaluationType.REAL, cmodel)}';
+          result = '${exp.evaluate(EvaluationType.REAL, cmodel)}';
         } catch (e) {
           if (buttonText == "=") {
-            expression = "0";
+            equation = "0";
+            result = "0";
           }
         }
-      });
-    } else if (buttonText == '⌫') {
-      setState(() {
-        expression = expression.substring(0, expression.length - 1);
-      });
-    } else {
-      String newExp = expression + buttonText;
-      if (buttonText == '.') {
-        if (isValidDot(newExp) && radioValue == "Dec") {
-          setState(() {
-            expression = newExp;
-          });
-        }
-      } else if (['+', '÷', '×', '-', '%'].contains(buttonText)) {
-        if (isValidOpp(newExp)) {
-          setState(() {
-            expression = newExp;
-          });
-        }
       } else {
-        setState(() {
-          expression = newExp;
-        });
+        equationFontSize = 48.0;
+        resultFontSize = 38.0;
+        if (equation == "0") {
+          equation = buttonText;
+        } else {
+          print(haveDot);
+          if (buttonText == '.') {
+            equation = equation + (!haveDot ? '.' : '');
+            haveDot = true;
+          } else {
+            if (['+', '÷', '×', '-', '%'].contains(buttonText)) {
+              haveDot = false;
+              equation = equation + (!haveOpp ? buttonText : '');
+              haveOpp = true;
+            } else {
+              equation = equation + buttonText;
+              haveOpp = false;
+            }
+          }
+        }
       }
-    }
-  }
-
-  bool isValidDot(String expression) {
-    int firstDot = -1, secondDot = -1;
-    int length = expression.length;
-    for (int i = length - 1; i >= 0; i--) {
-      if (expression[i] == '.' && firstDot == -1) {
-        firstDot = i;
-      } else if (expression[i] == '.' && secondDot == -1) {
-        secondDot = i;
-      }
-    }
-    if (firstDot == -1 || secondDot == -1) {
-      return true;
-    }
-    for (int i = secondDot + 1; i < firstDot; i++) {
-      if (['+', '÷', '×', '-', '%'].contains(expression[i])) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool isValidOpp(String expression) {
-    int firstOppreator = -1, secondOppreator = -1;
-    int length = expression.length;
-    for (int i = length - 1; i >= 0; i--) {
-      if (['+', '÷', '×', '-', '%'].contains(expression[i]) &&
-          firstOppreator == -1) {
-        firstOppreator = i;
-      } else if (['+', '÷', '×', '-', '%'].contains(expression[i]) &&
-          secondOppreator == -1) {
-        secondOppreator = i;
-      }
-    }
-    if (firstOppreator == -1 || secondOppreator == -1) {
-      return true;
-    } else if (secondOppreator != firstOppreator - 1) {
-      return true;
-    } else {
-      return false;
-    }
+    });
   }
 
   void radioButtonChanges(String value) {
@@ -181,8 +124,16 @@ class _SimpleCalculatorState extends State<Calculator> {
             alignment: Alignment.bottomRight,
             padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: Text(
-              "$expression",
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+              equation,
+              style: TextStyle(fontSize: equationFontSize),
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomRight,
+            padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
+            child: Text(
+              result,
+              style: TextStyle(fontSize: resultFontSize),
             ),
           ),
           Expanded(
