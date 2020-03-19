@@ -10,52 +10,10 @@ class Calculator extends StatefulWidget {
 
 class _SimpleCalculatorState extends State<Calculator> {
   String radioValue = "Int";
-  double firnum, secnum;
-  String textdisplay = "";
-  String res;
-  String operationperform;
+
   String expression = "";
   bool havedot = false;
   void buttonPressed(String buttonText) {
-    // if (buttonText == 'AC') {
-    //   textdisplay = "";
-    //   firnum = 0;
-    //   secnum = 0;
-    //   res = "";
-    // } else if (buttonText == "⌫") {
-    // } else if (buttonText == ".") {
-    //   textdisplay = textdisplay + buttonText;
-    //   res = textdisplay;
-    //   operationperform = buttonText;
-    // } else if (buttonText == "+" ||
-    //     buttonText == "-" ||
-    //     buttonText == "*" ||
-    //     buttonText == "/") {
-    //   firnum = double.parse(textdisplay);
-    //   res = "";
-    //   operationperform = buttonText;
-    // } else if (buttonText == "=") {
-    //   secnum = double.parse(textdisplay);
-    //   if (operationperform == "+") {
-    //     res = (firnum + secnum).toString();
-    //   }
-    //   if (operationperform == "-") {
-    //     res = (firnum - secnum).toString();
-    //   }
-    //   if (operationperform == "*") {
-    //     res = (firnum * secnum).toString();
-    //   }
-    //   if (operationperform == "/") {
-    //     res = (firnum ~/ secnum).toString();
-    //   }
-    // } else {
-    //   res = int.parse(textdisplay + buttonText).toString();
-    // }
-    // setState(() {
-    //   print('$textdisplay');
-    //   textdisplay = res;
-    // });
-
     if (buttonText == 'AC') {
       setState(() {
         expression = "";
