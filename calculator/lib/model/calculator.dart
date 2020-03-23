@@ -9,10 +9,10 @@ class Calculator extends StatefulWidget {
 }
 
 class _SimpleCalculatorState extends State<Calculator> {
-  String radioValue = "Int";
+  String radioValue = "";
 
   String expression = "";
-  bool havedot = false;
+
   void buttonPressed(String buttonText) {
     if (buttonText == 'AC') {
       setState(() {
@@ -59,16 +59,16 @@ class _SimpleCalculatorState extends State<Calculator> {
   }
 
   bool isValidDot(String expression) {
-    int firstDot = -1, secondDot = -1;
+    int firstDot = 0, secondDot = 0;
     int length = expression.length;
     for (int i = length - 1; i >= 0; i--) {
-      if (expression[i] == '.' && firstDot == -1) {
+      if (expression[i] == '.' && firstDot == 0) {
         firstDot = i;
-      } else if (expression[i] == '.' && secondDot == -1) {
+      } else if (expression[i] == '.' && secondDot == 0) {
         secondDot = i;
       }
     }
-    if (firstDot == -1 || secondDot == -1) {
+    if (firstDot == 0 || secondDot == 0) {
       return true;
     }
     for (int i = secondDot + 1; i < firstDot; i++) {
@@ -80,18 +80,18 @@ class _SimpleCalculatorState extends State<Calculator> {
   }
 
   bool isValidOpp(String expression) {
-    int firstOppreator = -1, secondOppreator = -1;
+    int firstOppreator = 0, secondOppreator = 0;
     int length = expression.length;
     for (int i = length - 1; i >= 0; i--) {
       if (['+', '÷', '×', '-', '%'].contains(expression[i]) &&
-          firstOppreator == -1) {
+          firstOppreator == 0) {
         firstOppreator = i;
       } else if (['+', '÷', '×', '-', '%'].contains(expression[i]) &&
-          secondOppreator == -1) {
+          secondOppreator == 0) {
         secondOppreator = i;
       }
     }
-    if (firstOppreator == -1 || secondOppreator == -1) {
+    if (firstOppreator == 0 || secondOppreator == 0) {
       return true;
     } else if (secondOppreator != firstOppreator - 1) {
       return true;
