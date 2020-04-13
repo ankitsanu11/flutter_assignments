@@ -81,9 +81,20 @@ class _GuessergameState extends State<Guessergame> {
   //         );
   //       });
   // }
-  // void true (){
-  //   if()
-  // }
+  void ontap() {
+    if (guessedNumber == randomNumber) {
+      show_dialog("you won", name);
+    } else {
+      numberOfTries--;
+      if (numberOfTries == numberOfTimes && guessedNumber != randomNumber) {
+        show_dialog("Game Over", name);
+      }
+
+      if (guessedNumber != randomNumber) {
+        show_dialog("you have to chance left :$numberOfTries", name);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,21 +127,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber) {
-                            show_dialog("Game Over", name);
-                          }
+                        ontap();
+                        // if (guessedNumber == randomNumber) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber) {
+                        //     show_dialog("Game Over", name);
+                        //   }
 
-                          if (guessedNumber != randomNumber) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        //   if (guessedNumber != randomNumber) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -157,23 +169,24 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber1) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber1) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
+                        ontap();
+                        // if (guessedNumber == randomNumber1) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber1) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
 
-                          if (guessedNumber != randomNumber1) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                            //numberOfTimes = 0;
-                          }
-                        }
+                        //   if (guessedNumber != randomNumber1) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //     //numberOfTimes = 0;
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -200,22 +213,23 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber2) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber2) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
+                        ontap();
+                        // if (guessedNumber == randomNumber2) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber2) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
 
-                          if (guessedNumber != randomNumber2) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        //   if (guessedNumber != randomNumber2) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -251,21 +265,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber3) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber3) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
-                          if (guessedNumber != randomNumber3) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        ontap();
+                        // if (guessedNumber == randomNumber3) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber3) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
+                        //   if (guessedNumber != randomNumber3) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -292,21 +307,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber4) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber4) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
-                          if (guessedNumber != randomNumber3) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        ontap();
+                        // if (guessedNumber == randomNumber4) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber4) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
+                        //   if (guessedNumber != randomNumber3) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -333,21 +349,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber5) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber5) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
-                          if (guessedNumber != randomNumber3) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        ontap();
+                        // if (guessedNumber == randomNumber5) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber5) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
+                        //   if (guessedNumber != randomNumber3) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -383,21 +400,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber6) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber6) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
-                          if (guessedNumber != randomNumber3) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        ontap();
+                        // if (guessedNumber == randomNumber6) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber6) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
+                        //   if (guessedNumber != randomNumber3) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -424,21 +442,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber7) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber7) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
-                          if (guessedNumber != randomNumber3) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        ontap();
+                        // if (guessedNumber == randomNumber7) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber7) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
+                        //   if (guessedNumber != randomNumber3) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -465,21 +484,22 @@ class _GuessergameState extends State<Guessergame> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        if (guessedNumber == randomNumber8) {
-                          show_dialog("you won", name);
-                        } else {
-                          numberOfTries--;
-                          if (numberOfTries == numberOfTimes &&
-                              guessedNumber != randomNumber8) {
-                            show_dialog("Game over", name);
-                            numberOfTimes = 0;
-                          }
-                          if (guessedNumber != randomNumber3) {
-                            show_dialog(
-                                "you have to chance left :$numberOfTries",
-                                name);
-                          }
-                        }
+                        ontap();
+                        // if (guessedNumber == randomNumber8) {
+                        //   show_dialog("you won", name);
+                        // } else {
+                        //   numberOfTries--;
+                        //   if (numberOfTries == numberOfTimes &&
+                        //       guessedNumber != randomNumber8) {
+                        //     show_dialog("Game over", name);
+                        //     numberOfTimes = 0;
+                        //   }
+                        //   if (guessedNumber != randomNumber8) {
+                        //     show_dialog(
+                        //         "you have to chance left :$numberOfTries",
+                        //         name);
+                        //   }
+                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
