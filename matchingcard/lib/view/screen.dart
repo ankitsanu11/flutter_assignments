@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:matchingcard/utils/image.dart';
 import 'package:matchingcard/view/newsscreen.dart';
 
 class Screen extends StatefulWidget {
@@ -13,6 +12,7 @@ class Screen extends StatefulWidget {
 }
 
 class _ScreenState extends State<Screen> {
+  Imagedetail _imagedata = Imagedetail();
   List<GlobalKey<FlipCardState>> cardstatekey = [
     GlobalKey<FlipCardState>(),
     GlobalKey<FlipCardState>(),
@@ -27,16 +27,17 @@ class _ScreenState extends State<Screen> {
   int previousIndex = 0;
   bool flip = false;
   int score = 0;
-  List<String> dataItems = [
-    "assets/ace.png",
-    "assets/king.png",
-    "assets/queen.jpg",
-    "assets/jack.jpeg",
-    "assets/ace.png",
-    "assets/king.png",
-    "assets/queen.jpg",
-    "assets/jack.jpeg",
-  ];
+
+  // List<String> dataItems = [
+  //   "assets/ace.png",
+  //   "assets/king.png",
+  //   "assets/queen.jpg",
+  //   "assets/jack.jpeg",
+  //   "assets/ace.png",
+  //   "assets/king.png",
+  //   "assets/queen.jpg",
+  //   "assets/jack.jpeg",
+  // ];
   void increament() {
     setState(() {});
   }
@@ -45,7 +46,7 @@ class _ScreenState extends State<Screen> {
   void initState() {
     super.initState();
 
-    dataItems.shuffle();
+    _imagedata.image.shuffle();
   }
 
   Widget build(BuildContext context) {
@@ -89,7 +90,8 @@ class _ScreenState extends State<Screen> {
                     } else {
                       flip = false;
                       if (previousIndex != index) {
-                        if (dataItems[previousIndex] != dataItems[index]) {
+                        if (_imagedata.image[previousIndex] !=
+                            _imagedata.image[index]) {
                           cardstatekey[previousIndex].currentState.toggleCard();
                           previousIndex = index;
                         } else {
@@ -124,7 +126,7 @@ class _ScreenState extends State<Screen> {
                   ),
                   back: Container(
                     child: Image.asset(
-                      dataItems[index],
+                      _imagedata.image[index],
                       fit: BoxFit.contain,
                       // height: 300,
                     ),
