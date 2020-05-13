@@ -38,10 +38,6 @@ class _GuessergameState extends State<Guessergame> {
     });
   }
 
-  // void onpress() {
-  //   random();
-  //   if()
-  // }
   void show_dialog(text, name) {
     showDialog(
         context: context,
